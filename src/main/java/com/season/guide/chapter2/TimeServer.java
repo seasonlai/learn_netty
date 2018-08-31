@@ -30,8 +30,8 @@ public class TimeServer {
 //
 //            while (true){
 //                Socket socket = serverSocket.accept();
-////                new Thread(new TimeServerHanlder(socket)).start();
-//                executePool.execute(new TimeServerHanlder(socket));
+////                new Thread(new TimeServerHandler(socket)).start();
+//                executePool.execute(new TimeServerHandler(socket));
 //            }
 //
 //
