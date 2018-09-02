@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.season.guide.chapter10;
+package com.season.guide.chapter10.fileserver;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
@@ -59,8 +59,8 @@ public class HttpFileServer {
                                     new HttpFileServerHandler(url));// 业务逻辑
                         }
                     });
-            ChannelFuture future = b.bind("192.168.1.102", port).sync();
-            System.out.println("HTTP文件目录服务器启动，网址是 : " + "http://192.168.1.102:"
+            ChannelFuture future = b.bind("127.0.0.1", port).sync();
+            System.out.println("HTTP文件目录服务器启动，网址是 : " + "http://127.0.0.1:"
                     + port + url);
             future.channel().closeFuture().sync();
         } finally {

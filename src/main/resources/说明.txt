@@ -1,0 +1,10 @@
+----- protobuf使用 -------
+
+1 下载https://github.com/google/protobuf/releases
+2 配好环境变量
+3 通过命令 protoc -I=源地址 --java_out=目标地址 文件名
+  如：protoc -I=D:\learn_netty\src\main\resources --java_out=D:\learn_netty\src\main\java SubscribeReq.proto
+
+------ jibx使用---------
+
+运行GenBindFileTool.java
