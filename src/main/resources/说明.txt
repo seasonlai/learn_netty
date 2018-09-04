@@ -16,14 +16,20 @@
 已完成队列为空时，进程会睡眠
 
 ------ SSL ----------
-博客：https://www.cnblogs.com/zhjh256/p/6488668.html
+
 ##生成Netty服务端私钥和证书仓库命令
 keytool -genkey -alias securechat -keysize 2048 -validity 365 -keyalg RSA -dname "CN=localhost" -keypass sNetty -storepass sNetty -keystore sChat.jks
-##Netty服务端签名
+##Netty服务端导出签名
 keytool -export -alias securechat -keystore sChat.jks -storepass sNetty -file sChat.cer
+## 服务端导入仓库
+keytool -import -trustcacerts -alias smcc -file cChat.cer -storepass sNetty -keystore sChat.jks
+
+
 ##生成客户端密钥对和证书仓库，用于将服务端的证书保存到客户端的授信证书仓库中
 keytool -genkey -alias smcc -keysize 2048 -validity 365 -keyalg RSA -dname "CN=localhost" -keypass cNetty -storepass cNetty -keystore cChat.jks
-##导入仓库
-keytool -import -trustcacerts -alias securechat -file ../server/sChat.cer -storepass cNetty -keystore cChat.jks
+## 导出签名
+keytool -export -alias smcc -keystore cChat.jks -storepass cNetty -file cChat.cer
+##客户端导入仓库
+keytool -import -trustcacerts -alias securechat -file sChat.cer -storepass cNetty -keystore cChat.jks
 
 
